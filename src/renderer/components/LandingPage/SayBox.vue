@@ -8,6 +8,7 @@
 </template>
 <script>
 import say from 'say'
+import mousetrap from 'mousetrap'
 
 export default {
   data() {
@@ -34,7 +35,10 @@ export default {
     }
   },
   mounted(){
-    
+    mousetrap.bind('mod+i', ()=>{
+      this.$refs.input.focus();
+    })
+      
   }
 
 }
