@@ -17,4 +17,10 @@ if (!fs.existsSync(homepath)) {
 
 const db = lowdb(new FileSync(Path.join(homepath, 'db.json')));
 
+db.defaults({ categories: {store:[{
+    id:0,
+    text:'Без категории'
+}], inc:1},  phrases: {store:[], inc:0} })
+    .write()
+
 export default db;
