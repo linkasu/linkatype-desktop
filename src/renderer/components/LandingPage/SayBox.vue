@@ -1,7 +1,7 @@
 <template>
   <div class="saybox form-group ">
     <!-- <predict></predict> -->
-    <input type="text" class="form-control" v-model="text" @keypress.enter="speak" @keydown="typing">
+    <input type="text" ref="input" class="form-control" v-model="text" @keypress.enter="speak" @keydown="typing">
     <button type="button" class="form-control btn" @click="speak">Сказать</button>
 
   </div>
@@ -22,8 +22,12 @@ export default {
       say.stop();
       say.speak(this.text)
     },
-    typing(e){
-      if(e.keyCode<48||e.keyCode>90) return;
+    typing({keyCode}){
+      if (keyCode==27){
+        this.$refs.input.blur('blur')
+        return;
+      }
+      if(keyCode<48||keyCode>90) return;
       this.player.pause();
       this.player.currentTime=0;
       this.player.play();
