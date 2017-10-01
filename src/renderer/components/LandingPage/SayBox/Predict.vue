@@ -10,7 +10,7 @@ export default {
     props: ['text', 'setText'],
     data() {
         return {
-            words: ['mum', 'dad'],
+            words: ['','','','',''],
             pos: 0,
             key: 'pdct.1.1.20171001T082116Z.f25e2b63fec6bfda.539464c0551ea8f6790d15ce6e78977d247d0804'
         }
@@ -43,16 +43,16 @@ export default {
             if (word == null) {
                 return;
             }
+            word += ' ';
             if (this.pos < 0) {
                 let text = this.text.slice(0, this.pos);
-                
-                this.setText(text+word);
-                return;
-            } else if (this.pos > 0) {
-                this.setText(this.text + ' '+word);
+
+                this.setText(text + word);
+            } else {
+                this.setText(this.text + (this.pos>0?' ':'') + word);
             }
             this.clear();
-            
+
         }
     }
 }
@@ -60,7 +60,8 @@ export default {
 
 <style scoped>
 .predict>button {
-    height: 7vh;
+    min-height: 7vh;
     width: 20%;
+
 }
 </style>
