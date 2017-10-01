@@ -1,6 +1,6 @@
 <template>
     <div class="predict">
-        <button v-for="(element, index) in words" class='btn btn-default ' @click="select(index)">{{element}}</button>
+        <button v-for="(element, index) in words.length>0?words:['','','','','']" class='btn btn-default ' @click="select(index)">{{element}}</button>
 
     </div>
 </template>
@@ -10,7 +10,7 @@ export default {
     props: ['text', 'setText'],
     data() {
         return {
-            words: ['','','','',''],
+            words: [],
             pos: 0,
             key: 'pdct.1.1.20171001T082116Z.f25e2b63fec6bfda.539464c0551ea8f6790d15ce6e78977d247d0804'
         }
