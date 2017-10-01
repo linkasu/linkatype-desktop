@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import say from 'say';
 import swal from 'sweetalert'
 import mousetrap from 'mousetrap'
 
@@ -50,7 +49,7 @@ export default {
     },
     methods: {
         sayPhrase(data) {
-            say.speak(data.element.text)
+            this.$say.speak(data.element.text)
         },
         addPhrase() {
             swal({
@@ -79,8 +78,7 @@ export default {
             }
             var phrase = this.currentPhrases[id];
             if (phrase != null) {
-                say.stop();
-                say.speak(phrase.text)
+                this.$say.speak(phrase.text)
 
             }
 

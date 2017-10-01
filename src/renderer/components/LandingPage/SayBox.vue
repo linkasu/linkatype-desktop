@@ -1,44 +1,46 @@
 <template>
   <div class="saybox form-group ">
-    <!-- <predict></predict> -->
-    <input type="text" ref="input" class="form-control" v-model="text" @keypress.enter="speak" @keydown="typing">
-    <button type="button" class="form-control btn" @click="speak">Сказать</button>
+    <predict ref="predict" :text.sync='text' :setText='(text)=>{this.text=text}'></predict>
+    <input type="text" ref="input" class="form-control" v-model="text" @keypress.enter="$say.speak(text)" @keydown="typing">
+    <button type="button" class="form-control btn" @click="$say.speak(text)">Сказать</button>
 
   </div>
 </template>
 <script>
-import say from 'say'
+
 import mousetrap from 'mousetrap'
+
+import Predict from './SayBox/Predict.vue'
 
 export default {
   data() {
     return {
-      text:'',
+      text: '',
       player: new Audio('/static/typing.wav')
     };
   },
-  methods:{
-    speak(){
-      
-      say.stop();
-      say.speak(this.text)
-    },
-    typing({keyCode}){
-      if (keyCode==27){
+  components: {Predict},
+  methods: {
+    typing({ keyCode, metaKey }) {
+      if (metaKey&&keyCode>48&&keyCode<54) {
+        this.$refs.predict.select(keyCode-49)
+        return;
+      }
+      if (keyCode == 27) {
         this.$refs.input.blur('blur')
         return;
       }
-      if(keyCode<48||keyCode>90) return;
+      if (keyCode < 48 || keyCode > 90) return;
       this.player.pause();
-      this.player.currentTime=0;
+      this.player.currentTime = 0;
       this.player.play();
     }
   },
-  mounted(){
-    mousetrap.bind('mod+i', ()=>{
+  mounted() {
+    mousetrap.bind('mod+i', () => {
       this.$refs.input.focus();
     })
-      
+
   }
 
 }
@@ -51,9 +53,13 @@ export default {
   height: 25vh;
   padding-left: 15vw;
   padding-right: 15vw;
-  padding-top: 5vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
   background: #dcdfdc;
   position: absolute;
   text-align: center;
+}
+.saybox>*{
+  height: 7vh;
 }
 </style>
