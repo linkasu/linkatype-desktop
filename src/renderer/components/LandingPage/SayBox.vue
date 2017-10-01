@@ -63,8 +63,4 @@ export default {
 .saybox>* {
   height: 7vh;
 }
-
-.saybox-input:focus {
-  background: #aca;
-}
 </style>
