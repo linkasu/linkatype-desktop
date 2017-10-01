@@ -14,12 +14,14 @@ import db from '../../node/db'
 import List from './Common/List'
 
 import Categories from './Categories'
+
 let categoriesData = Categories.data();
 
 let store = {
     phrases: [],
     currentPhrases: []
 };
+categoriesData.phrasesData=store
 export default {
     components: {
         List
