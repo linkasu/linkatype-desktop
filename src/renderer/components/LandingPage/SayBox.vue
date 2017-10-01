@@ -1,7 +1,7 @@
 <template>
   <div class="saybox form-group ">
     <predict ref="predict" :text.sync='text' :setText='(text)=>{this.text=text}'></predict>
-    <input type="text" ref="input" class="form-control" v-model="text" @keypress.enter="$say.speak(text)" @keydown="typing">
+    <input type="text" ref="input" class="form-control saybox-input" v-model="text" @keypress.enter="$say.speak(text)" @keydown="typing">
     <button type="button" class="form-control btn" @click="$say.speak(text)">Сказать</button>
 
   </div>
@@ -19,11 +19,11 @@ export default {
       player: new Audio('/static/typing.wav')
     };
   },
-  components: {Predict},
+  components: { Predict },
   methods: {
     typing({ keyCode, metaKey }) {
-      if (metaKey&&keyCode>48&&keyCode<54) {
-        this.$refs.predict.select(keyCode-49)
+      if (metaKey && keyCode > 48 && keyCode < 54) {
+        this.$refs.predict.select(keyCode - 49)
         return;
       }
       if (keyCode == 27) {
@@ -59,7 +59,12 @@ export default {
   position: absolute;
   text-align: center;
 }
-.saybox>*{
+
+.saybox>* {
   height: 7vh;
+}
+
+.saybox-input:focus {
+  background: #aca;
 }
 </style>

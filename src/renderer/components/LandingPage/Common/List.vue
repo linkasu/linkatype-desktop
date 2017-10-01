@@ -34,7 +34,7 @@ export default {
 <style scoped>
 .list {
     top: 25vh;
-    height: 75vh;
+    height: 70vh;
     position: absolute;
     width: 50%;
     overflow-y: scroll;
