@@ -65,10 +65,7 @@ export default {
                             }
                         }).then((newText) => {
                             if (newText == null) return;
-                            _this.$db.get('phrases.store')
-                                .find({ id: data.element.id })
-                                .assign({ text: newText })
-                                .write()
+                            data.element.text = newText;
                         })
                     }
                 }));
