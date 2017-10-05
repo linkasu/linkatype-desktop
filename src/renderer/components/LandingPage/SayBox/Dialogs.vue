@@ -18,7 +18,7 @@ export default {
             dialogs: [
                 { text: '' },
                 { text: '' },
-                { text: '' },
+                { text: '' }
             ],
         }
     },
@@ -50,7 +50,8 @@ export default {
         }
     },
     mounted(){
-        
+        this.$mousetrap.bind('mod+up', this.up);
+        this.$mousetrap.bind('mod+down', this.down);
     }
 }
 </script>
