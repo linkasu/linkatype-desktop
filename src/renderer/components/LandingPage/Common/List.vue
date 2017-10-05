@@ -1,7 +1,7 @@
 <template>
     <div class=" list">
         <button v-for="(element, index) in elements"  draggable="true" class='btn form-control' :class="{'btn-success':current==index}" @click="choose({index, element:elements[index]});" @contextmenu="choose({index, element:elements[index]}, true);" ondragstart='return true' ondragover='(e)=>{e.preventDefault(); alert()}' >{{element.text}}</button>
-        <button class='btn form-control' @click="add()">Добавить</button>
+        <button v-if="add!=null" class='btn form-control' @click="add()">Добавить</button>
     </div>
 </template>
 
@@ -24,15 +24,15 @@ export default {
             required: true
         },
         add: {
-            required: true
-        },
+          default:null
+          },
     }
 
 }
 </script>
 
-<style scoped>
-.list {
+<style >
+.memory>.list {
     top: 25vh;
     height: 70vh;
     position: absolute;
@@ -41,6 +41,10 @@ export default {
     padding-left: 1vw;
     padding-right: 1vw;
     padding-top: 1vw;
+}
+.list>.btn{
+        text-overflow: ellipsis;
+        word-wrap: normal; 
 }
 </style>
 

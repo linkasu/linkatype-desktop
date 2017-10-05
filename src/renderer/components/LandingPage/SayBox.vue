@@ -1,9 +1,9 @@
 <template>
   <div class="saybox form-group ">
-    <predict ref="predict" :text.sync='text' :setText='(text)=>{this.text=text}'></predict>
+    <predict ref="predict" :text.sync='text' :setText='setText'></predict>
     <input type="text" ref="input" class="form-control saybox-input" v-model="text" @keypress.enter="$say.speak(text)" @keydown="typing">
     <button type="button" class="form-control btn" @click="$say.speak(text)">Сказать</button>
-
+    <dialogs ref="dialogas"  :text.sync='text' :setText='setText'></dialogs>
   </div>
 </template>
 <script>
@@ -11,6 +11,7 @@
 import mousetrap from 'mousetrap'
 
 import Predict from './SayBox/Predict.vue'
+import Dialogs from './SayBox/Dialogs.vue'
 
 export default {
   data() {
@@ -19,7 +20,7 @@ export default {
       player: new Audio('/static/typing.wav')
     };
   },
-  components: { Predict },
+  components: { Predict, Dialogs },
   methods: {
     typing({ keyCode, metaKey }) {
       // predictor
@@ -37,7 +38,8 @@ export default {
       this.player.pause();
       this.player.currentTime = 0;
       this.player.play();
-    }
+    },
+    setText(text) { this.text = text }
   },
   mounted() {
     // focus
