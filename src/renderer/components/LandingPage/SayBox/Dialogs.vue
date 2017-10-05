@@ -16,9 +16,9 @@ export default {
         return {
             current: 0,
             dialogs: [
-                { text: 'mum' },
-                { text: 'mum' },
-                { text: 'mum' },
+                { text: '' },
+                { text: '' },
+                { text: '' },
             ],
         }
     },
@@ -35,7 +35,22 @@ export default {
     methods: {
         choose(data) {
             this.current = data.index;
+        },
+        up() {
+            this.current--;
+            if (this.current < 0) {
+                this.current = 2;
+            }
+        },
+        down() {
+            this.current++;
+            if (this.current > 2) {
+                this.current = 0;
+            }
         }
+    },
+    mounted(){
+        
     }
 }
 </script>
