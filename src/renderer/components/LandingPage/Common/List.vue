@@ -42,10 +42,6 @@ export default {
     padding-right: 1vw;
     padding-top: 1vw;
 }
-.list>.btn{
-        text-overflow: ellipsis;
-        word-wrap: normal; 
-        white-space: normal;
-}
+
 </style>
 

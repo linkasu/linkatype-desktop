@@ -33,6 +33,10 @@ export default {
 </script>
 
 <style>
-
+.btn{
+        text-overflow: ellipsis;
+        word-wrap: normal; 
+        white-space: normal;
+}
 
 </style>
