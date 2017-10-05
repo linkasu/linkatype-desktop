@@ -22,14 +22,17 @@ export default {
   components: { Predict },
   methods: {
     typing({ keyCode, metaKey }) {
+      // predictor
       if (metaKey && keyCode > 48 && keyCode < 54) {
         this.$refs.predict.select(keyCode - 49)
         return;
       }
+      // escape
       if (keyCode == 27) {
         this.$refs.input.blur('blur')
         return;
       }
+      // keys
       if (keyCode < 48 || keyCode > 90) return;
       this.player.pause();
       this.player.currentTime = 0;
@@ -37,7 +40,8 @@ export default {
     }
   },
   mounted() {
-    mousetrap.bind('mod+i', () => {
+    // focus
+    mousetrap.bind('esc', () => {
       this.$refs.input.focus();
     })
 
