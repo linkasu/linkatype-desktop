@@ -6,7 +6,6 @@
 
 <script>
 import swal from 'sweetalert'
-import mousetrap from 'mousetrap'
 
 import db from '../../node/db'
 
@@ -114,15 +113,12 @@ export default {
         }
     },
     mounted() {
-        mousetrap.bind('ctrl+tab', (e) => {
+        this.$mousetrap.bind('ctrl+tab', (e) => {
             this.current += 1;
             if (this.current == this.categories.length) {
                 this.current = 0;
             }
         })
-    },
-    destroyed() {
-        mousetrap.unbind('ctrl+tab')
     }
 }
 </script>

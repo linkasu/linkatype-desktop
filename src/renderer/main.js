@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import axios from 'axios'
+import mousetrap from 'mousetrap'
 
 import db from './node/db'
 import say from './node/say'
@@ -10,6 +11,7 @@ if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
 Vue.db = Vue.prototype.$db = db
 Vue.say = Vue.prototype.$say = say
+Vue.mousetrap = Vue.prototype.$mousetrap = mousetrap
 
 Vue.config.productionTip = false
 

@@ -6,8 +6,6 @@
 
 <script>
 import swal from 'sweetalert'
-import mousetrap from 'mousetrap'
-
 import db from '../../node/db'
 
 
@@ -133,7 +131,7 @@ export default {
     mounted() {
         this.phrases = db.get('phrases').value().store;
 
-        mousetrap.bind(['mod+1', 'mod+2', 'mod+3', 'mod+4', 'mod+5', 'mod+6', ' mod+7', 'mod+8', 'mod+9', 'mod+0'], (e) => {
+        this.$mousetrap.bind(['mod+1', 'mod+2', 'mod+3', 'mod+4', 'mod+5', 'mod+6', ' mod+7', 'mod+8', 'mod+9', 'mod+0'], (e) => {
             var id = parseInt(e.key);
             id--;
             if (id == -1) {

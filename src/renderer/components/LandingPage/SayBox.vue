@@ -8,8 +8,6 @@
 </template>
 <script>
 
-import mousetrap from 'mousetrap'
-
 import Predict from './SayBox/Predict.vue'
 import Dialogs from './SayBox/Dialogs.vue'
 
@@ -43,7 +41,7 @@ export default {
   },
   mounted() {
     // focus
-    mousetrap.bind('esc', () => {
+    this.$mousetrap.bind('esc', () => {
       this.$refs.input.focus();
     })
 

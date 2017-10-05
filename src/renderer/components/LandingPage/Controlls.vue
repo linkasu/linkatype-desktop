@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import mousetrap from 'mousetrap'
 
 export default {
   data() {
@@ -24,7 +23,7 @@ export default {
     }
   },
   mounted(){
-    mousetrap.bind('mod+f', this.alarm);
+   this.$mousetrap.bind('mod+f', this.alarm);
   }
 }
 </script>
