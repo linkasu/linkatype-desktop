@@ -1,6 +1,6 @@
 <template>
   <div class="saybox form-group ">
-    <predict ref="predict" :text.sync='text' :setText='setText'></predict>
+    <predict ref="predict" :text.sync='text' :input.sync="this.$refs.input" :setText='setText'></predict>
     <input type="text" ref="input" class="form-control saybox-input" v-model="text" @keypress.enter="$say.speak(text)" @keydown="typing">
     <button type="button" class="form-control btn" @click="$say.speak(text)">Сказать</button>
     <dialogs ref="dialogs"  :text.sync='text' :setText='setText'></dialogs>
@@ -21,6 +21,7 @@ export default {
   components: { Predict, Dialogs },
   methods: {
     typing({ keyCode, metaKey }) {
+
       if (metaKey&&(keyCode==38||keyCode==40)){
         this.$refs.dialogs[keyCode==38?'up':'down']();
       }

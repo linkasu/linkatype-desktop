@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    props: ['text', 'setText'],
+    props: ['text', 'setText', 'input'],
     data() {
         return {
             words: [],
@@ -17,12 +17,12 @@ export default {
     },
     watch: {
         text(v) {
-            if (v == '') {
+                       if (v == '') {
                 this.clear();
                 return v;
 
             }
-            let url = `https://predictor.yandex.net/api/v1/predict.json/complete?key=${this.key}&q=${encodeURIComponent(v)}&lang=ru&limit=5`;
+            let url = `https://predictor.yandex.net/api/v1/predict.json/complete?key=${this.key}&q=${encodeURIComponent(v.slice(0, this.position()))}&lang=ru&limit=5`;
             this.$http.get(url).then((res) => {
                 this.pos = (res.data.pos);
                 this.words = (res.data.text)
@@ -43,17 +43,28 @@ export default {
             if (word == null) {
                 return;
             }
+
+            let text = this.text;
             word += ' ';
+            let notend = this.position()!=this.text.length;
+            if (notend){
+                word += this.text.slice(this.position());
+                text = (this.text.slice(0, this.position()))
+            } 
             if (this.pos < 0) {
-                let text = this.text.slice(0, this.pos);
+              text = text.slice(0, this.pos);
 
                 this.setText(text + word);
             } else {
-                this.setText(this.text + (this.pos>0?' ':'') + word);
+                this.setText(text + (this.pos>0?' ':'') + word);
             }
             this.clear();
 
-        }
+        },
+
+        position(){
+            return this.input.selectionEnd;
+       }
     }
 }
 </script>
