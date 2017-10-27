@@ -1,6 +1,6 @@
 <template>
     <div class=" list">
-        <button v-for="(element, index) in elements"  draggable="true" class='btn form-control' :class="{'btn-success':current==index}" @click="choose({index, element:elements[index]});" @contextmenu="choose({index, element:elements[index]}, true);" ondragstart='return true' ondragover='(e)=>{e.preventDefault(); alert()}' >{{element.text}}</button>
+        <button v-for="(element, index) in elements"  draggable="true" class='btn form-control' :class="{'btn-success':current==index}" @click="choose({index, element:elements[index]});" @contextmenu="choose({index, element:elements[index]}, true);" ondragstart='return true' >{{element.text}}</button>
         <button v-if="add!=null" class='btn form-control' @click="add()">Добавить</button>
     </div>
 </template>
@@ -42,6 +42,5 @@ export default {
     padding-right: 1vw;
     padding-top: 1vw;
 }
-
 </style>
 
