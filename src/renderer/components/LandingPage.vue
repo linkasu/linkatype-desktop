@@ -1,6 +1,7 @@
 <template>
   <div class="content-fluid">
-    <div :is='state'></div>
+    <application v-show="!settingsButtonData.active"></application>
+    <settings v-show="settingsButtonData.active"></settings>
     <controlls></controlls>
   </div>
 </template>
@@ -17,12 +18,6 @@ export default {
     return {
       settingsButtonData: Controlls.components.Settings.data()
     };
-  },
-  computed:{
-    state(){
-      
-      return this.settingsButtonData.active?'Settings': 'Application';
-    }
   },
   methods: {
     open(link) {
