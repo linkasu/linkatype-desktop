@@ -1,28 +1,28 @@
 <template>
   <div class="content-fluid">
-      <say-box></say-box>    
-      
-    <div class="memory">
-      
-      <categories></categories>
-      <phrases></phrases>
-    </div>
+    <div :is='state'></div>
     <controlls></controlls>
   </div>
 </template>
 
 <script>
-import store from '@/node/store'
+import Application from './LandingPage/Application' 
+import Settings from './LandingPage/Settings' 
+import Controlls from './LandingPage/Controlls' 
 
-import Categories from './LandingPage/Categories'
-import Phrases from './LandingPage/Phrases'
-import SayBox from './LandingPage/SayBox'
-import Controlls from './LandingPage/Controlls'
 
 export default {
-  components: { Categories, Phrases, SayBox, Controlls },
+  components: { Application, Controlls, Settings },
   data () {
-    return store;
+    return {
+      settingsButtonData: Controlls.components.Settings.data()
+    };
+  },
+  computed:{
+    state(){
+      
+      return this.settingsButtonData.active?'Settings': 'Application';
+    }
   },
   methods: {
     open(link) {

@@ -1,17 +1,19 @@
 <template>
   <div class="controlls">
+    <settings></settings>
     <alarm></alarm>
   </div>
 </template>
 
 <script>
 import Alarm from './Controlls/Alarm'
+import Settings from './Controlls/Settings'
 
 export default {
 
   methods: {
   },
-  components: { Alarm },
+  components: { Alarm, Settings },
 }
 </script>
 
