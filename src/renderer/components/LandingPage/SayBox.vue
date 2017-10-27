@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       text: '',
-      player: new Audio('/static/typing.wav')
+      player: new Audio('static/typing.wav')
     };
   },
   components: { Predict, Dialogs },

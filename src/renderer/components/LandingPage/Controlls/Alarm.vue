@@ -9,7 +9,7 @@ export default {
     data() {
         return {
 
-            alarmPlayer: new Audio('/static/alarm.wav')
+            alarmPlayer: new Audio('static/alarm.wav')
         }
     },
     methods: {
