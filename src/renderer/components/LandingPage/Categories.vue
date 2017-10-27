@@ -12,7 +12,7 @@ import swal from 'sweetalert'
 import List from './Common/List'
 
 let store = {
-    categories: this.$db.get('categories').value().store,
+    categories: null,
     phrasesData: null,
     current: 0
 };
@@ -112,6 +112,7 @@ export default {
         }
     },
     mounted() {
+        this.categories=this.$db.get('categories').value().store;
         this.$mousetrap.bind('ctrl+tab', (e) => {
             this.current += 1;
             if (this.current == this.categories.length) {

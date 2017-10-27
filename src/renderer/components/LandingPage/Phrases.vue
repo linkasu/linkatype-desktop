@@ -29,6 +29,7 @@ export default {
     },
     computed: {
         currentCategoryId() {
+            if (categoriesData.categories==null) return null;
             return (categoriesData.categories[categoriesData.current]).id;
 
         }
