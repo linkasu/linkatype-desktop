@@ -23,6 +23,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "bootstrap": "^3.3.7",
+    "electron-default-menu": "^1.0.1",
     "homedir": "^0.6.0",
     "lowdb": "^1.0.0",
     "mousetrap": "^1.6.1",
