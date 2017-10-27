@@ -7,13 +7,12 @@
 <script>
 import swal from 'sweetalert'
 
-import db from '../../node/db'
 
 
 import List from './Common/List'
 
 let store = {
-    categories: db.get('categories').value().store,
+    categories: this.$db.get('categories').value().store,
     phrasesData: null,
     current: 0
 };

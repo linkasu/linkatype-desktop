@@ -6,7 +6,7 @@
 
 <script>
 import swal from 'sweetalert'
-import db from '../../node/db'
+
 
 
 import List from './Common/List'
@@ -129,7 +129,7 @@ export default {
         }
     },
     mounted() {
-        this.phrases = db.get('phrases').value().store;
+        this.phrases = this.$db.get('phrases').value().store;
 
         this.$mousetrap.bind(['mod+1', 'mod+2', 'mod+3', 'mod+4', 'mod+5', 'mod+6', ' mod+7', 'mod+8', 'mod+9', 'mod+0'], (e) => {
             var id = parseInt(e.key);
