@@ -8,6 +8,7 @@
 </template>
 <script>
 
+import Settings from './Settings'
 import Predict from './SayBox/Predict.vue'
 import Dialogs from './SayBox/Dialogs.vue'
 
@@ -15,6 +16,7 @@ export default {
   data() {
     return {
       text: '',
+      settingsData: Settings.data(),
       player: new Audio('static/typing.wav')
     };
   },
@@ -35,11 +37,14 @@ export default {
         this.$refs.input.blur('blur')
         return;
       }
-      // keys
+      // not keys
       if (keyCode < 48 || keyCode > 90) return;
+
+      if (this.settingsData.settings.common.typingSound){
       this.player.pause();
       this.player.currentTime = 0;
       this.player.play();
+      }
     },
     setText(text) { this.text = text }
   },
