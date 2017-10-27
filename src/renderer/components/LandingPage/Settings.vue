@@ -15,6 +15,15 @@
     <input type="button" class="btn btn-default" id="onlineTtsTumbler" :value="settings.tts.offline?'Включить':'Выключить'" :class='{"btn-success":!settings.tts.offline}' @click='settings.tts.offline=!settings.tts.offline'>
 
   </div>
+  <div class="form-group">
+    <label for="onlineTtsTumbler">Выбор онлайн голоса:</label>
+    <select v-model="settings.tts.voice" v-if="!settings.tts.offline">
+        <option value="zahar">Захар</option>
+        <option value="ermil">Емиль</option>
+        <option value="jane">Джейн</option>
+        <option value="omazh">Ома</option>
+     </select>
+  </div>
     </form>
 </div>
 </template>

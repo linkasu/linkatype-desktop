@@ -21,7 +21,10 @@ export default {
         if (yatts ==null){
             initya();
         }
-        yatts.speak(text)
+        yatts.speak(text, {
+            speaker: settings.settings.tts.voice  
+            
+        })
     }
 }
 
@@ -30,8 +33,7 @@ function initya(){
         // Настройки синтеза. Список доступных настроек см. в справочнике.
         {
           // API-ключ. Может быть задан глобально через объект ya.speechkit.settings.
-          apikey: yaapikey,
-          speaker: 'jane'  
-        }
+          apikey: yaapikey
+    }
       );
 }
