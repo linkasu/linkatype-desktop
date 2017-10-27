@@ -14,7 +14,8 @@
 </template>
 
 <script>
-const store = { settings: {}};
+import db from '@/node/db'
+const store = { settings: db.get('settings').value()};
 export default {
     data(){
         return store;
@@ -28,9 +29,6 @@ export default {
           },
           deep:true
       }  
-    },
-    created () {
-        this.settings=this.$db.get('settings').value();
     }
 }
 
