@@ -1,6 +1,6 @@
 <template>
     <div class="predict">
-        <button v-for="(element, index) in words.length>0?words:['','','','','']" class='btn btn-default ' @click="select(index)">{{element}}</button>
+        <button v-for="(element, index) in words.length>0?words:['здесь','будут','отображаться','подсказки','предиктора']" class='btn btn-default ' @click="select(index)">{{element}}</button>
 
     </div>
 </template>
