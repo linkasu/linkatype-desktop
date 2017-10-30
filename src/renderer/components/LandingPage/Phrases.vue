@@ -50,8 +50,44 @@ export default {
     },
     methods: {
         sayPhrase(data, context) {
+            
             if (context) {
-                let _this = this;
+               this.context();
+                return;
+            }
+            this.$say.speak(data.element.text)
+        },
+        addPhrase() {
+            swal({
+                title: 'Добавить фразу',
+
+                content: "input",
+            }).then((res) => {
+                this.add(res);
+
+                        });
+        },
+        add(phrase){
+
+                if (phrase == null) return;
+                let inc = this.$db.get('phrases').value().inc;
+                this.phrases.push({ text: phrase, id: inc, category: this.currentCategoryId });
+                this.$db.set('phrases.inc', inc + 1).write();
+
+                this.current = this.phrases.length - 1;
+
+        },
+        changeCategory() {
+
+        },
+        updateCurrent() {
+            this.currentPhrases = this.phrases.filter((el) => {
+                return el.category == this.currentCategoryId;
+            })
+
+        },
+        context(){
+             let _this = this;
                 let menu = new this.$electron.remote.Menu()
                 menu.append(new this.$electron.remote.MenuItem({
                     label: 'Изменить', click() {
@@ -101,32 +137,6 @@ export default {
                     }
                 }));
                 menu.popup(this.$electron.remote.getCurrentWindow());
-                return;
-            }
-            this.$say.speak(data.element.text)
-        },
-        addPhrase() {
-            swal({
-                title: 'Добавить фразу',
-
-                content: "input",
-            }).then((res) => {
-                if (res == null) return;
-                let inc = this.$db.get('phrases').value().inc;
-                this.phrases.push({ text: res, id: inc, category: this.currentCategoryId });
-                this.$db.set('phrases.inc', inc + 1).write();
-
-                this.current = this.phrases.length - 1;
-            });
-        },
-        changeCategory() {
-
-        },
-        updateCurrent() {
-            this.currentPhrases = this.phrases.filter((el) => {
-                return el.category == this.currentCategoryId;
-            })
-
         }
     },
     mounted() {

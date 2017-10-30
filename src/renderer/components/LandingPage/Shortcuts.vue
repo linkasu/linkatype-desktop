@@ -6,6 +6,7 @@
     <li><key text='esc'></key> - войти/выйти в поле ввода</li>
     <li><key text='mod'></key><key text='+'></key><key text='↑'></key> - переключить на предыдущий чат</li>
     <li><key text='mod'></key><key text='+'></key><key text='↓'></key> - переключить на следующий чат</li>
+    <li><key text='mod'></key><key text='+'></key><key text='s'></key> - сохранить набранный текст в фразу</li>
     <h3>В окне ввода:</h3>
     <li><key text='enter'></key> - сказать</li>
     <li><key text='mod'></key><key text='+'></key><key text='1...5'></key> - выбрать подсказку</li>

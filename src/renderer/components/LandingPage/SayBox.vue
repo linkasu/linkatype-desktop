@@ -23,10 +23,17 @@ export default {
   components: { Predict, Dialogs },
   methods: {
     typing({ keyCode, metaKey }) {
-
+      console.log(keyCode)
+      // change chat
       if (metaKey&&(keyCode==38||keyCode==40)){
         this.$refs.dialogs[keyCode==38?'up':'down']();
       }
+      
+      // save
+      if(metaKey&&keyCode==83) {
+        this.save();
+}
+
       // predictor
       if (metaKey && keyCode > 48 && keyCode < 54) {
         this.$refs.predict.select(keyCode - 49)
@@ -46,13 +53,17 @@ export default {
       this.player.play();
       }
     },
-    setText(text) { this.text = text }
+    setText(text) { this.text = text },
+    save(){
+        this.$parent.$children[2].add(this.text);      
+    }
   },
   mounted() {
     // focus
     this.$mousetrap.bind('esc', () => {
       this.$refs.input.focus();
-    })
+    });
+    this.$mousetrap.bind('mod+s', this.save)
 
   }
 
