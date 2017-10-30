@@ -63,6 +63,7 @@ export default {
     this.$mousetrap.bind('esc', () => {
       this.$refs.input.focus();
     });
+    // save
     this.$mousetrap.bind('mod+s', this.save)
 
   }
