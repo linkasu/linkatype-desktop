@@ -17,7 +17,7 @@ export default {
     },
     watch: {
         text(v) {
-                       if (v == '') {
+            if (v == '') {
                 this.clear();
                 return v;
 

@@ -30,7 +30,8 @@ db.defaults({
             offline: true,
             voice: 'jane'
         }
-    }
+    },
+    firstRun: true
 })
     .write()
 
