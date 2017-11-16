@@ -1,6 +1,8 @@
-import { app, BrowserWindow, Menu, shell } from 'electron'
+import { app, BrowserWindow, Menu, shell, dialog } from 'electron'
+import { autoUpdater } from "electron-updater";
 
 import defaultMenu from 'electron-default-menu';
+
 
 /**
  * Set `__static` path to static files in production
@@ -49,3 +51,30 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+const server = "https://hazel-jvjvbxnwfj.now.sh/";
+const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
+
+autoUpdater.setFeedURL(feed);
+function checkUpdate(){
+autoUpdater.checkForUpdates().then((res)=>{
+console.log(res)
+});
+};
+autoUpdater.on("update-downloaded", (event, releaseNotes, releaseName) => {
+  const dialogOpts = {
+    type: "info",
+    buttons: ["Restart", "Later"],
+    title: "Application Update",
+    message: process.platform === "win32" ? releaseNotes : releaseName,
+    detail:
+      "A new version has been downloaded. Restart the application to apply the updates."
+  };
+
+  dialog.showMessageBox(dialogOpts, response => {
+    if (response === 0) autoUpdater.quitAndInstall();
+  });
+});
+
+checkUpdate();
+setInterval(checkUpdate, 1000*60*60*24);

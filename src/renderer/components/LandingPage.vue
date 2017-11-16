@@ -11,16 +11,19 @@
 </template>
 
 <script>
-import Application from './LandingPage/Application' 
-import Settings from './LandingPage/Settings' 
-import Controlls from './LandingPage/Controlls' 
-import Shortcuts from './LandingPage/Shortcuts' 
-import InitPage from './LandingPage/InitPage' 
+import { app } from "electron";
+import swal from "sweetalert";
+
+import Application from "./LandingPage/Application";
+import Settings from "./LandingPage/Settings";
+import Controlls from "./LandingPage/Controlls";
+import Shortcuts from "./LandingPage/Shortcuts";
+import InitPage from "./LandingPage/InitPage";
 
 
 export default {
   components: { Application, Controlls, Settings, Shortcuts, InitPage },
-  data () {
+  data() {
     return {
       settingsButtonData: Controlls.components.Settings.data(),
       shortcutsButtonData: Controlls.components.Shortcuts.data(),
@@ -28,33 +31,33 @@ export default {
     };
   },
   watch: {
-    firstRun(v){
-                      this.$db.set('firstRun', v).write();
-
+    firstRun(v) {
+      this.$db.set("firstRun", v).write();
     }
   },
-  
+
   methods: {
     open(link) {
-      this.$electron.shell.openExternal(link)
+      this.$electron.shell.openExternal(link);
     }
   },
-  created(){
-    this.firstRun=this.$db.get('firstRun').value();
+  created() {
+    this.firstRun = this.$db.get("firstRun").value();
+
   }
-}
+};
 </script>
 
 <style>
-body,#app{
-  padding:0;
-  margin:0;
-  font-family:'sana';
+body,
+#app {
+  padding: 0;
+  margin: 0;
+  font-family: "sana";
 }
-.btn{
-        text-overflow: ellipsis;
-        word-wrap: normal; 
-        white-space: normal;
+.btn {
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  white-space: normal;
 }
-
 </style>
