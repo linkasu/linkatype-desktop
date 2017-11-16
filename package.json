@@ -1,7 +1,7 @@
 {
   "name": "distypepro-desktop",
   "version": "0.0.0",
-  "author": "",
+  "author": "ibakaidov",
   "description": "program for tts",
   "license": null,
   "main": "./dist/electron/main.js",
