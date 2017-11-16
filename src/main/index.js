@@ -64,11 +64,11 @@ console.log(res)
 autoUpdater.on("update-downloaded", (event, releaseNotes, releaseName) => {
   const dialogOpts = {
     type: "info",
-    buttons: ["Restart", "Later"],
+    buttons: ["Перезапустить", "Не сейчас"],
     title: "Application Update",
     message: process.platform === "win32" ? releaseNotes : releaseName,
     detail:
-      "A new version has been downloaded. Restart the application to apply the updates."
+      "Была загружена новая версия. Перезапустите приложение, чтобы применить обновления."
   };
 
   dialog.showMessageBox(dialogOpts, response => {
