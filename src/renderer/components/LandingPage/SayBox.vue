@@ -22,20 +22,21 @@ export default {
   },
   components: { Predict, Dialogs },
   methods: {
-    typing({ keyCode, metaKey }) {
-      console.log(keyCode)
+    typing({ keyCode, metaKey, ctrlKey }) {
+      console.log(keyCode, metaKey, ctrlKey);
+      let modKey = metaKey||ctrlKey;
       // change chat
-      if (metaKey&&(keyCode==38||keyCode==40)){
+      if (modKey&&(keyCode==38||keyCode==40)){
         this.$refs.dialogs[keyCode==38?'up':'down']();
       }
       
       // save
-      if(metaKey&&keyCode==83) {
+      if(modKey&&keyCode==83) {
         this.save();
 }
 
       // predictor
-      if (metaKey && keyCode > 48 && keyCode < 54) {
+      if (modKey && keyCode > 48 && keyCode < 54) {
         this.$refs.predict.select(keyCode - 49)
         return;
       }
