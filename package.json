@@ -19,8 +19,8 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "distypepro-desktop",
-    "appId": "org.simulatedgreg.electron-vue",
+    "productName": "DisType Pro",
+    "appId": "ru.aacidov.distypepro",
     "directories": {
       "output": "build"
     },
