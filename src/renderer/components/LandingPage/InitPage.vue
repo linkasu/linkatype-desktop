@@ -38,6 +38,7 @@
         margin:0;
         position: absolute;
         top:0;
+        overflow-y: scroll;
     }
 </style>
 

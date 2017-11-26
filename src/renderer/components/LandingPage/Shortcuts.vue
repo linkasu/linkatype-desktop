@@ -35,6 +35,8 @@
     left: 10vw;
     top: 10vh;
     background-color: #adfcbd;
+    overflow-y: scroll;
+
 }
 ul {
     list-style: none;

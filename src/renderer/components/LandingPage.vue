@@ -44,7 +44,7 @@ export default {
   created() {
     this.firstRun = this.$db.get("firstRun").value();
 
-  }
+   }
 };
 </script>
 
