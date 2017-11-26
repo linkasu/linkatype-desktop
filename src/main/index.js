@@ -26,7 +26,7 @@ function createWindow () {
     useContentSize: true,
     width: 1000
   })
-
+mainWindow.toggleDevTools()
   mainWindow.loadURL(winURL)
 
   mainWindow.on('closed', () => {
@@ -52,29 +52,29 @@ app.on('activate', () => {
   }
 })
 
-const server = "https://hazel-jvjvbxnwfj.now.sh/";
-const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
+// const server = "https://hazel-jvjvbxnwfj.now.sh/";
+// const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
 
-autoUpdater.setFeedURL(feed);
-function checkUpdate(){
-autoUpdater.checkForUpdates().then((res)=>{
-console.log(res)
-});
-};
-autoUpdater.on("update-downloaded", (event, releaseNotes, releaseName) => {
-  const dialogOpts = {
-    type: "info",
-    buttons: ["Перезапустить", "Не сейчас"],
-    title: "Application Update",
-    message: process.platform === "win32" ? releaseNotes : releaseName,
-    detail:
-      "Была загружена новая версия. Перезапустите приложение, чтобы применить обновления."
-  };
+// autoUpdater.setFeedURL(feed);
+// function checkUpdate(){
+// autoUpdater.checkForUpdates().then((res)=>{
+// console.log(res)
+// });
+// };
+// autoUpdater.on("update-downloaded", (event, releaseNotes, releaseName) => {
+//   const dialogOpts = {
+//     type: "info",
+//     buttons: ["Перезапустить", "Не сейчас"],
+//     title: "Application Update",
+//     message: process.platform === "win32" ? releaseNotes : releaseName,
+//     detail:
+//       "Была загружена новая версия. Перезапустите приложение, чтобы применить обновления."
+//   };
 
-  dialog.showMessageBox(dialogOpts, response => {
-    if (response === 0) autoUpdater.quitAndInstall();
-  });
-});
+//   dialog.showMessageBox(dialogOpts, response => {
+//     if (response === 0) autoUpdater.quitAndInstall();
+//   });
+// });
 
-checkUpdate();
-setInterval(checkUpdate, 1000*60*60*24);
+// checkUpdate();
+// setInterval(checkUpdate, 1000*60*60*24);

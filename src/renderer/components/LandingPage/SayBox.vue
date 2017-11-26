@@ -23,7 +23,7 @@ export default {
   components: { Predict, Dialogs },
   methods: {
     typing({ keyCode, metaKey, ctrlKey }) {
-      console.log(keyCode, metaKey, ctrlKey);
+      
       let modKey = metaKey||ctrlKey;
       // change chat
       if (modKey&&(keyCode==38||keyCode==40)){
