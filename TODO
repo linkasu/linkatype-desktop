@@ -1,0 +1,9 @@
+redesign
+  - btn oveflow hidden: done
+  - import android colors
+  - move elements like android
+interface
+  - add stop button
+publish
+  - set autoupdater
+  - release!
