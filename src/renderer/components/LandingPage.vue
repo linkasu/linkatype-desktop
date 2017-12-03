@@ -61,7 +61,7 @@ body,
   white-space: normal;
   margin: 1px;  
 }
-.success, .btn-success {
+.success, .btn-success, .btn-success:active, .btn:hover, .btn-success:focus {
   background: white;
   color: black;
   border: none;
