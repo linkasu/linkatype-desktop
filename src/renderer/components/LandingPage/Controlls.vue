@@ -24,7 +24,7 @@ export default {
 .controlls {
   height: 5vh;
   background: #3f51b5;
-  bottom: 0;
+  top: 0;
   position: fixed;
   text-align: center;
   width: 100%;

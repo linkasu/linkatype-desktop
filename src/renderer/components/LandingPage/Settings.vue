@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="settings">
     <h1>
         Настройки
     </h1>
@@ -29,22 +29,27 @@
 </template>
 
 <script>
-import db from '@/node/db'
-const store = { settings: db.get('settings').value()};
+import db from "@/node/db";
+const store = { settings: db.get("settings").value() };
 export default {
-    data(){
-        return store;
-    },
-    watch: {
-      settings:{
-          handler(v){
-                this.$db.set('settings', v).write();
-                return v;
-           
-          },
-          deep:true
-      }  
+  data() {
+    return store;
+  },
+  watch: {
+    settings: {
+      handler(v) {
+        this.$db.set("settings", v).write();
+        return v;
+      },
+      deep: true
     }
-}
-
+  }
+};
 </script>
+
+<style scoped>
+.settings {
+  position: absolute;
+  top:5vh;
+}
+</style>

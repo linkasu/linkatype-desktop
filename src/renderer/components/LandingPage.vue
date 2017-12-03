@@ -2,10 +2,10 @@
 <div>
   <init-page v-show='firstRun'></init-page>
   <div class="content-fluid" v-show='!firstRun'>
+    <controlls></controlls>    
     <application v-show="!settingsButtonData.active"></application>
     <settings v-show="settingsButtonData.active"></settings>
     <shortcuts v-show="shortcutsButtonData.active"></shortcuts>
-    <controlls></controlls>
   </div>
   </div>
 </template>

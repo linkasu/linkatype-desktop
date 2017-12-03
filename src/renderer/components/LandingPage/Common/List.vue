@@ -29,7 +29,7 @@ export default {
 
 <style >
 .memory > .list {
-  top: 25vh;
+  top: 30vh;
   height: 70vh;
   position: absolute;
   width: 50%;
