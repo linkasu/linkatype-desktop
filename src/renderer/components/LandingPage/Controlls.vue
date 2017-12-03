@@ -1,5 +1,6 @@
 <template>
   <div class="controlls">
+    <button class="btn btn-success product-name">DisType pro</button>
     <alarm></alarm>    
     <shortcuts></shortcuts>    
     <settings></settings>
@@ -29,6 +30,12 @@ export default {
 }
 
 .controlls > button {
-  height: 5vh;
+  height: 4.5vh;
+  margin: 0.25vh;
+}
+
+.product-name {
+  position: absolute;
+  left: 0;
 }
 </style>

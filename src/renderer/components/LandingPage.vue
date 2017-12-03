@@ -20,7 +20,6 @@ import Controlls from "./LandingPage/Controlls";
 import Shortcuts from "./LandingPage/Shortcuts";
 import InitPage from "./LandingPage/InitPage";
 
-
 export default {
   components: { Application, Controlls, Settings, Shortcuts, InitPage },
   data() {
@@ -43,8 +42,7 @@ export default {
   },
   created() {
     this.firstRun = this.$db.get("firstRun").value();
-
-   }
+  }
 };
 </script>
 
@@ -59,9 +57,13 @@ body,
   overflow: hidden;
   word-wrap: normal;
   white-space: normal;
-  margin: 1px;  
+  margin: 1px;
 }
-.success, .btn-success, .btn-success:active, .btn:hover, .btn-success:focus {
+.success,
+.btn-success,
+.btn-success:active,
+.btn:hover,
+.btn-success:focus {
   background: white;
   color: black;
   border: none;
