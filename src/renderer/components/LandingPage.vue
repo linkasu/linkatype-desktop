@@ -59,5 +59,12 @@ body,
   overflow: hidden;
   word-wrap: normal;
   white-space: normal;
+  margin: 1px;  
+}
+.success, .btn-success {
+  background: white;
+  color: black;
+  border: none;
+  border-bottom: 1px solid #ff4081;
 }
 </style>

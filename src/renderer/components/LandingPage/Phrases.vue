@@ -165,7 +165,6 @@ export default {
 
 <style scoped>
 .phrases {
-    background: #e1efec;
     right: 0;
 }
 </style>

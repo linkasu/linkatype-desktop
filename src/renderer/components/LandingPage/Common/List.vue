@@ -6,41 +6,38 @@
 </template>
 
 <script>
-
 export default {
-    props: {
-        elements: {
-            required: true
-        },
-        current: {
-            default:null
-        },
-        drop:{
-            default:()=>{
-
-            }
-        },
-        choose: {
-            required: true
-        },
-        add: {
-          default:null
-          },
+  props: {
+    elements: {
+      required: true
+    },
+    current: {
+      default: null
+    },
+    drop: {
+      default: () => {}
+    },
+    choose: {
+      required: true
+    },
+    add: {
+      default: null
     }
-
-}
+  }
+};
 </script>
 
 <style >
-.memory>.list {
-    top: 25vh;
-    height: 70vh;
-    position: absolute;
-    width: 50%;
-    overflow-y: scroll;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    padding-top: 1vw;
+.memory > .list {
+  top: 25vh;
+  height: 70vh;
+  position: absolute;
+  width: 50%;
+  overflow-y: scroll;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 1vw;
+  background: #fafafa;
 }
 </style>
 
