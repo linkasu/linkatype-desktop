@@ -56,7 +56,7 @@ body,
   font-family: "sana";
 }
 .btn {
-  text-overflow: ellipsis;
+  overflow: hidden;
   word-wrap: normal;
   white-space: normal;
 }
