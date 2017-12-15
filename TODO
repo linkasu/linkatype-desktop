@@ -1,7 +1,7 @@
 redesign
   - btn oveflow hidden: done
-  - import android colors
-  - move elements like android
+  - import android colors: done
+  - move elements like android: done
 interface
   - add stop button
 publish
