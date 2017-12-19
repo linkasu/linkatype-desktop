@@ -11,11 +11,21 @@ let settings = SettingsVue.data();
 
 yakit.call(window)
 
-let yatts = null;
 
 let speaking = false;
+const speech = {
+    yatts: null,
 
-export default {
+    initya() {
+    this.yatts = window.ya.speechkit.Tts(
+        // Настройки синтеза. Список доступных настроек см. в справочнике.
+        {
+            // API-ключ. Может быть задан глобально через объект ya.speechkit.settings.
+            apikey: yaapikey
+        }
+    );
+    },
+
     speak(text) {
         this.stop()
 
@@ -24,13 +34,13 @@ export default {
                 wsay.say(text)
                 return;
             }
-            say.speak(text);
+            this.speak(text);
             return;
         }
-        if (yatts == null) {
-            initya();
+        if (this.yatts == null) {
+            this.initya();
         }
-        yatts.speak(text, {
+        this.yatts.speak(text, {
             speaker: settings.settings.tts.voice,
             stopCallback() {
 
@@ -43,20 +53,13 @@ export default {
                 wsay.stop()
                 return
             }
-            say.stop()
+            this.stop()
             return
         }
-        if (yatts != null) {
-            yatts.stop()
+        if (this.yatts != null) {
+            return
         }
     }
 }
-function initya() {
-    yatts = window.ya.speechkit.Tts(
-        // Настройки синтеза. Список доступных настроек см. в справочнике.
-        {
-            // API-ключ. Может быть задан глобально через объект ya.speechkit.settings.
-            apikey: yaapikey
-        }
-    );
-}
+
+export default speech
