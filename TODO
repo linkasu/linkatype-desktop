@@ -5,7 +5,7 @@ design
   - add split between categories and phrases: done
   - fix resize head problem: done
 interface
-  - add save button;
+  - add save button: done
   - add stop button
 publish
   - set autoupdater

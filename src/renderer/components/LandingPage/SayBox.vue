@@ -7,17 +7,20 @@
   </div>
 </template>
 <script>
-import Settings from "./Settings";
-import Predict from "./SayBox/Predict.vue";
-import Dialogs from "./SayBox/Dialogs.vue";
+import Settings from './Settings';
+import Predict from './SayBox/Predict.vue';
+import Dialogs from './SayBox/Dialogs.vue';
+
+const store = {
+  instance: null,
+  text: '',
+  settingsData: Settings.data(),
+  player: new Audio('static/typing.wav')
+}
 
 export default {
   data() {
-    return {
-      text: "",
-      settingsData: Settings.data(),
-      player: new Audio("static/typing.wav")
-    };
+    return store;
   },
   components: { Predict, Dialogs },
   methods: {
@@ -25,7 +28,7 @@ export default {
       let modKey = metaKey || ctrlKey;
       // change chat
       if (modKey && (keyCode == 38 || keyCode == 40)) {
-        this.$refs.dialogs[keyCode == 38 ? "up" : "down"]();
+        this.$refs.dialogs[keyCode == 38 ? 'up' : 'down']();
       }
 
       // save
@@ -40,7 +43,7 @@ export default {
       }
       // escape
       if (keyCode == 27) {
-        this.$refs.input.blur("blur");
+        this.$refs.input.blur('blur');
         return;
       }
       // not keys
@@ -60,12 +63,11 @@ export default {
     }
   },
   mounted() {
+    this.instance = this;
     // focus
-    this.$mousetrap.bind("esc", () => {
+    this.$mousetrap.bind('esc', () => {
       this.$refs.input.focus();
     });
-    // save
-    this.$mousetrap.bind("mod+s", this.save);
   }
 };
 </script>
