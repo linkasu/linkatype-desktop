@@ -34,7 +34,7 @@ const speech = {
                 wsay.say(text)
                 return;
             }
-            this.speak(text);
+            say.speak(text);
             return;
         }
         if (this.yatts == null) {
@@ -51,13 +51,13 @@ const speech = {
         if (settings.settings.tts.offline) {
             if (isWin) {
                 wsay.stop()
-                return
+                
             }
-            this.stop()
-            return
+            say.stop()
+            
         }
         if (this.yatts != null) {
-            return
+            this.yatts.stop()
         }
     }
 }

@@ -9,7 +9,7 @@ interface
   - fix edit and delete menu  
   - add stop button
 engine:
-  - fix tts loop call stack
+  - fix tts loop call stack: done
 publish
   - set autoupdater
   - release!
