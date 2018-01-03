@@ -124,3 +124,8 @@ export default {
 </script>
 
 
+<style scoped>
+.categories {
+  border-right: 0.1px solid #323232;
+}
+</style>
