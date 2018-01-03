@@ -3,7 +3,7 @@ design
   - import android colors: done
   - move elements like android: done
   - add split between categories and phrases
-  - fix resize head problem
+  - fix resize head problem: done
 interface
   - add save button;
   - add stop button
