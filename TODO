@@ -6,7 +6,10 @@ design
   - fix resize head problem: done
 interface
   - add save button: done
+  - fix edit and delete menu  
   - add stop button
+engine:
+  - fix tts loop call stack
 publish
   - set autoupdater
   - release!
