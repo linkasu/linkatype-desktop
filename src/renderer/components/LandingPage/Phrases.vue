@@ -147,7 +147,7 @@ export default {
         "mod+4",
         "mod+5",
         "mod+6",
-        " mod+7",
+        "mod+7",
         "mod+8",
         "mod+9",
         "mod+0"
