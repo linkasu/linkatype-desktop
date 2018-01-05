@@ -57,7 +57,7 @@ const speech = {
             
         }
         if (this.yatts != null) {
-            this.yatts.stop()
+       //     this.yatts.stop()
         }
     }
 }
