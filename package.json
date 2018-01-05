@@ -61,7 +61,7 @@
     "lowdb": "^1.0.0",
     "mousetrap": "^1.6.1",
     "say": "^0.14.0",
-    "sweetalert": "^2.0.8",
+    "sweetalert2": "^7.3.2",
     "vue": "^2.5.8",
     "vue-electron": "^1.0.6"
   },

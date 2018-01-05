@@ -12,7 +12,7 @@
 
 <script>
 import { app } from "electron";
-import swal from "sweetalert";
+import swal from "sweetalert2";
 
 import Application from "./LandingPage/Application";
 import Settings from "./LandingPage/Settings";

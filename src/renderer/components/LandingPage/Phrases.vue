@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import swal from "sweetalert";
+import swal from "sweetalert2";
 
 import List from "./Common/List";
 
@@ -17,7 +17,6 @@ let store = {
   phrases: [],
   currentPhrases: []
 };
-categoriesData.phrasesData = store;
 export default {
   components: {
     List
@@ -53,14 +52,18 @@ export default {
       }
       this.$say.speak(data.element.text);
     },
-    addPhrase() {
-      swal({
+    async addPhrase() {
+      const { value } = await swal({
         title: "Добавить фразу",
-
-        content: "input"
-      }).then(res => {
-        this.add(res);
+        input: "text",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Готово",
+        cancelButtonText: "Нет"
       });
+      if (value == null) return;
+      this.add(value.trim());
     },
     add(phrase) {
       if (phrase == null) return;
@@ -86,49 +89,39 @@ export default {
       menu.append(
         new this.$electron.remote.MenuItem({
           label: "Изменить",
-          click() {
-            swal({
+          async click() {
+            const { value } = await swal({
               title: "Изменить фразу",
-              content: {
-                element: "input",
-                attributes: {
-                  value: data.element.text
-                }
-              }
-            }).then(newText => {
-              if (newText == null) return;
-              data.element.text = newText;
+              input: "text",
+              inputValue: data.element.text,
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Готово",
+              cancelButtonText: "Нет"
             });
+            if (value == null) return;
+            data.element.text = value;
           }
         })
       );
       menu.append(
         new this.$electron.remote.MenuItem({
           label: "Удалить",
-          click() {
-            swal({
+          async click() {
+            const { value } = await swal({
               title: "Удалить фразу",
-              content: data.element.text,
-
-              cancel: {
-                text: "Нет",
-                value: null,
-                visible: false,
-                className: "",
-                closeModal: true
-              },
-              confirm: {
-                text: "Да",
-                value: true,
-                visible: true,
-                className: "",
-                closeModal: true
-              }
-            }).then(res => {
-              if (res == false) return;
-              _this.phrases = _this.phrases.filter(p => {
-                return p.id != data.element.id;
-              });
+              text: data.element.text,
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Да, удалить",
+              cancelButtonText: "Нет"
+            });
+            if (!value) return;
+            _this.phrases = _this.phrases.filter(p => {
+              return p.id != data.element.id;
             });
           }
         })
@@ -138,6 +131,7 @@ export default {
   },
   mounted() {
     this.phrases = this.$db.get("phrases").value().store;
+    categoriesData.phrasesData = store;
 
     this.$mousetrap.bind(
       [

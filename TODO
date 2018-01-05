@@ -7,7 +7,7 @@ design
   - design settings menu
 interface
   - add save button: done
-  - fix edit and delete menu  
+  - fix edit and delete menu: done  
   - add stop button
 engine:
   - fix tts loop call stack: done
