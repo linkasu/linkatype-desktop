@@ -63,7 +63,8 @@
     "say": "^0.14.0",
     "sweetalert2": "^7.3.2",
     "vue": "^2.5.8",
-    "vue-electron": "^1.0.6"
+    "vue-electron": "^1.0.6",
+    "vue-select": "github:sagalbot/vue-select"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

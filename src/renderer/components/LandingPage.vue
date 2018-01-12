@@ -3,7 +3,7 @@
   <init-page v-show='firstRun'></init-page>
   <div class="content-fluid" v-show='!firstRun'>
     <controlls></controlls>    
-    <application v-show="!settingsButtonData.active"></application>
+    <application></application>
     <settings v-show="settingsButtonData.active"></settings>
     <shortcuts v-show="shortcutsButtonData.active"></shortcuts>
   </div>
@@ -58,6 +58,7 @@ body,
   word-wrap: normal;
   white-space: normal;
   margin: 1px;
+  margin-bottom: 2px;
 }
 .success,
 .btn-success,
@@ -67,6 +68,7 @@ body,
   background: white;
   color: black;
   border: none;
+  margin-bottom: 1px;
   border-bottom: 1px solid #ff4081;
 }
 </style>
