@@ -4,7 +4,8 @@ design
   - move elements like android: done
   - add split between categories and phrases: done
   - fix resize head problem: done
-  - design settings menu as drouplist
+  - design settings menu as droplist: done
+  - change font size
 interface
   - add save button: done
   - fix edit and delete menu: done  

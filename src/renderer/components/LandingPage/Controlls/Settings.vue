@@ -5,13 +5,11 @@
 </template>
 
 <script>
-const store = {
-  active: false
-};
+import Settings from '../Settings'
 
 export default {
   data() {
-    return store;
+    return Settings.data()
   }
 };
 </script>
@@ -22,5 +20,7 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   min-width: 24px;
+
+
 }
 </style>

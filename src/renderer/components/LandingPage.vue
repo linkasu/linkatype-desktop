@@ -4,7 +4,7 @@
   <div class="content-fluid" v-show='!firstRun'>
     <controlls></controlls>    
     <application></application>
-    <settings v-show="settingsButtonData.active"></settings>
+    <settings v-show="settingsMenuData.active"></settings>
     <shortcuts v-show="shortcutsButtonData.active"></shortcuts>
   </div>
   </div>
@@ -20,12 +20,15 @@ import Controlls from "./LandingPage/Controlls";
 import Shortcuts from "./LandingPage/Shortcuts";
 import InitPage from "./LandingPage/InitPage";
 
+console.log(Settings.data())
+
 export default {
   components: { Application, Controlls, Settings, Shortcuts, InitPage },
-  data() {
+  data() {  
     return {
       settingsButtonData: Controlls.components.Settings.data(),
       shortcutsButtonData: Controlls.components.Shortcuts.data(),
+      settingsMenuData: Settings.data(),
       firstRun: false
     };
   },
