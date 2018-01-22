@@ -29,35 +29,36 @@
     </main>
 </template>
 
-<style scoped>
-    .init-page{
-        text-align: center;
-        background: #ecefe1;
-        height:100vh;
-        width:100vw;
-        margin:0;
-        position: absolute;
-        top:0;
-        overflow-y: scroll;
-    }
-</style>
 
 <script>
-    import Settings from './Settings.vue'
+import Settings from "./Settings.vue"
 
-    export default {
-        data () {
-            return {
-                settings: Settings.data().settings
-            };
-        },
-        methods:{
-            testSpeech(){
-                this.$say.speak('Ура, всё работает!')
-            },
-            exit(){
-                this.$parent.firstRun=false;
-            }
-        }
+export default {
+  data() {
+    return {
+      settings: Settings.data().settings
     }
+  },
+  methods: {
+    testSpeech() {
+      this.$say.speak("Ура, всё работает!")
+    },
+    exit() {
+      this.$parent.firstRun = false
+    }
+  }
+}
 </script>
+
+<style scoped>
+.init-page {
+  text-align: center;
+  background: #ecefe1;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  overflow-y: scroll;
+}
+</style>

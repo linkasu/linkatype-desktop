@@ -11,15 +11,17 @@
 </template>
 
 <script>
-    
-import Categories from './Categories'
-import Phrases from './Phrases'
-import SayBox from './SayBox'
-import Controlls from './Controlls'
+import Categories from "./Categories"
+import Phrases from "./Phrases"
+import SayBox from "./SayBox"
+import Controlls from "./Controlls"
 
-export default{
-    components: {
-        Categories, Phrases,SayBox,Controlls
-    }
+export default {
+  components: {
+    Categories,
+    Phrases,
+    SayBox,
+    Controlls
+  }
 }
 </script>

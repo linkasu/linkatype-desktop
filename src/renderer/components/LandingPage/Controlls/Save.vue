@@ -13,9 +13,9 @@ export default {
     }
   },
   mounted() {
-    this.$mousetrap.bind("mod+s", this.save);
+    this.$mousetrap.bind("mod+s", this.save)
   }
-};
+}
 </script>
 
 <style scoped>

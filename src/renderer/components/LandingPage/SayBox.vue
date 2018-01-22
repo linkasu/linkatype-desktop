@@ -7,9 +7,9 @@
   </div>
 </template>
 <script>
-import Settings from './Settings';
-import Predict from './SayBox/Predict.vue';
-import Dialogs from './SayBox/Dialogs.vue';
+import Settings from './Settings'
+import Predict from './SayBox/Predict.vue'
+import Dialogs from './SayBox/Dialogs.vue'
 
 const store = {
   instance: null,
@@ -20,53 +20,53 @@ const store = {
 
 export default {
   data() {
-    return store;
+    return store
   },
   components: { Predict, Dialogs },
   methods: {
     typing({ keyCode, metaKey, ctrlKey }) {
-      let modKey = metaKey || ctrlKey;
+      let modKey = metaKey || ctrlKey
       // change chat
       if (modKey && (keyCode == 38 || keyCode == 40)) {
-        this.$refs.dialogs[keyCode == 38 ? 'up' : 'down']();
+        this.$refs.dialogs[keyCode == 38 ? 'up' : 'down']()
       }
 
       // save
       if (modKey && keyCode == 83) {
-        this.save();
+        this.save()
       }
 
       // predictor
       if (modKey && keyCode > 48 && keyCode < 54) {
-        this.$refs.predict.select(keyCode - 49);
-        return;
+        this.$refs.predict.select(keyCode - 49)
+        return
       }
       // escape
       if (keyCode == 27) {
-        this.$refs.input.blur('blur');
-        return;
+        this.$refs.input.blur('blur')
+        return
       }
       // not keys
-      if (keyCode < 48 || keyCode > 90) return;
+      if (keyCode < 48 || keyCode > 90) return
 
       if (this.settingsData.settings.common.typingSound) {
-        this.player.pause();
-        this.player.currentTime = 0;
-        this.player.play();
+        this.player.pause()
+        this.player.currentTime = 0
+        this.player.play()
       }
     },
     setText(text) {
-      this.text = text;
+      this.text = text
     },
     save() {
-      this.$parent.$children[2].add(this.text);
+      this.$parent.$children[2].add(this.text)
     }
   },
   mounted() {
-    this.instance = this;
+    this.instance = this
     // focus
     this.$mousetrap.bind('esc', () => {
-      this.$refs.input.focus();
+      this.$refs.input.focus()
     });
   }
 };

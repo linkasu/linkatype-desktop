@@ -8,38 +8,43 @@
 </template>
 
 <script>
-import vSelect from 'vue-select';
-import db from '@/node/db';
+import vSelect from "vue-select"
+import db from "@/node/db"
 
 const store = {
-  settings: db.get('settings').value(),
+  settings: db.get("settings").value(),
   voices: [
-    { value: 'zahar', label: 'Захар' },
-    { value: 'ermil', label: 'Емиль' },
-    { value: 'jane', label: 'Джейн' },
-    { value: 'omazh', label: 'Ома' }
+    { value: "zahar", label: "Захар" },
+    { value: "ermil", label: "Емиль" },
+    { value: "jane", label: "Джейн" },
+    { value: "omazh", label: "Ома" }
   ],
   voice: null,
   active: false
-};
+}
 export default {
   components: { vSelect },
   data() {
-    return store;
+    return store
   },
   watch: {
-    voice({label, value}){
+    voice({ label, value }) {
       this.settings.tts.voice = value
-        this.$db.set('settings', this.settings).write();
-      
-      return {label, value}
+      this.$db.set("settings", this.settings).write()
+
+      return { label, value }
     }
   },
-  mounted(){
-    if(!this.settings.tts.voice){
-      this.settings.tts.voice='jane'
+  mounted() {
+    if (!this.settings.tts.voice) {
+      this.settings.tts.voice = "jane"
     }
-    this.voice = {value:this.settings.tts.voice, label: this.voices.filter((voice)=>{return voice.value==this.settings.tts.voice})[0].label }
+    this.voice = {
+      value: this.settings.tts.voice,
+      label: this.voices.filter(voice => {
+        return voice.value == this.settings.tts.voice
+      })[0].label
+    }
   }
 }
 </script>
@@ -58,13 +63,13 @@ export default {
   width: 100%;
   z-index: 1;
 }
-.background{
+.background {
   width: 100vw;
   height: 100vh;
   left: 0;
   top: 0;
   position: fixed;
-  background: rgba(255,255,255, .75);
+  background: rgba(255, 255, 255, 0.75);
   z-index: -1;
   cursor: pointer;
 }

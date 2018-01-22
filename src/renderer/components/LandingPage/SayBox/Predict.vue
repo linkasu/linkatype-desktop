@@ -19,56 +19,56 @@ export default {
   watch: {
     text(v) {
       if (v == "") {
-        this.clear();
-        return v;
+        this.clear()
+        return v
       }
       let url = `https://predictor.yandex.net/api/v1/predict.json/complete?key=${this
         .key}&q=${encodeURIComponent(
         v.slice(0, this.position())
-      )}&lang=ru&limit=5`;
+      )}&lang=ru&limit=5`
       this.$http
         .get(url)
         .then(res => {
-          this.pos = res.data.pos;
-          this.words = res.data.text;
+          this.pos = res.data.pos
+          this.words = res.data.text
         })
         .catch(e => {
-          this.clear();
-        });
+          this.clear()
+        })
 
-      return v;
+      return v
     }
   },
   methods: {
     clear() {
-      this.words = [];
-      this.pos = 0;
+      this.words = []
+      this.pos = 0
     },
     select(index) {
-      let word = this.words[index];
+      let word = this.words[index]
       if (word == null) {
-        return;
+        return
       }
 
-      let text = this.text;
-      word += " ";
-      let notend = this.position() != this.text.length;
+      let text = this.text
+      word += " "
+      let notend = this.position() != this.text.length
       if (notend) {
-        word += this.text.slice(this.position());
-        text = this.text.slice(0, this.position());
+        word += this.text.slice(this.position())
+        text = this.text.slice(0, this.position())
       }
       if (this.pos < 0) {
-        text = text.slice(0, this.pos);
+        text = text.slice(0, this.pos)
 
-        this.setText(text + word);
+        this.setText(text + word)
       } else {
-        this.setText(text + (this.pos > 0 ? " " : "") + word);
+        this.setText(text + (this.pos > 0 ? " " : "") + word)
       }
-      this.clear();
+      this.clear()
     },
 
     position() {
-      return this.input.selectionEnd;
+      return this.input.selectionEnd
     }
   }
 };

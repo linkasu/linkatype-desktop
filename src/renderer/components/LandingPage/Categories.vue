@@ -1,31 +1,31 @@
-<template>
+ <template>
     <list class="categories" :elements.sync='categories' :current='current' :choose='changeCategory' :add='addCategory'>
 
     </list>
 </template>
 
 <script>
-import swal from "sweetalert2";
+import swal from "sweetalert2"
 
-import List from "./Common/List";
+import List from "./Common/List"
 
 let store = {
   categories: null,
   phrasesData: null,
   current: 0
-};
+}
 export default {
   components: {
     List
   },
   data() {
-    return store;
+    return store
   },
   watch: {
     categories: {
       handler(value) {
-        this.$db.set("categories.store", value).write();
-        return value;
+        this.$db.set("categories.store", value).write()
+        return value
       },
       deep: true
     }
@@ -33,8 +33,8 @@ export default {
   methods: {
     changeCategory(data, context) {
       if (context) {
-        let _this = this;
-        let menu = new this.$electron.remote.Menu();
+        let _this = this
+        let menu = new this.$electron.remote.Menu()
         menu.append(
           new this.$electron.remote.MenuItem({
             label: "Изменить",
@@ -48,12 +48,12 @@ export default {
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Готово",
                 cancelButtonText: "Нет"
-              });
-              if (value == null) return;
-              data.element.text = value;
+              })
+              if (value == null) return
+              data.element.text = value
             }
           })
-        );
+        )
         menu.append(
           new this.$electron.remote.MenuItem({
             label: "Удалить",
@@ -68,25 +68,25 @@ export default {
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Да, удалить",
                 cancelButtonText: "Нет"
-              });
-              if (!value) return;
-              _this.current = 0;
-              console.log(_this.phrasesData);
+              })
+              if (!value) return
+              _this.current = 0
+              console.log(_this.phrasesData)
               _this.phrasesData.phrases.forEach(p => {
                 if (p.category == data.element.id) {
-                  p.category = 0;
+                  p.category = 0
                 }
-              });
+              })
               _this.categories = _this.categories.filter(c => {
-                return c.id != data.element.id;
-              });
+                return c.id != data.element.id
+              })
             }
           })
-        );
-        menu.popup(this.$electron.remote.getCurrentWindow());
-        return;
+        )
+        menu.popup(this.$electron.remote.getCurrentWindow())
+        return
       }
-      this.current = data.index;
+      this.current = data.index
     },
     async addCategory() {
       const { value } = await swal({
@@ -97,25 +97,25 @@ export default {
         cancelButtonColor: "#d33",
         confirmButtonText: "Готово",
         cancelButtonText: "Нет"
-      });
-      if (value == null) return;
-      let inc = this.$db.get("categories").value().inc;
-      this.categories.push({ text: value, id: inc });
-      this.$db.set("categories.inc", inc + 1).write();
+      })
+      if (value == null) return
+      let inc = this.$db.get("categories").value().inc
+      this.categories.push({ text: value, id: inc })
+      this.$db.set("categories.inc", inc + 1).write()
 
-      this.current = this.categories.length - 1;
+      this.current = this.categories.length - 1
     }
   },
   mounted() {
-    this.categories = this.$db.get("categories").value().store;
+    this.categories = this.$db.get("categories").value().store
     this.$mousetrap.bind("ctrl+tab", e => {
-      this.current += 1;
+      this.current += 1
       if (this.current == this.categories.length) {
-        this.current = 0;
+        this.current = 0
       }
-    });
+    })
   }
-};
+}
 </script>
 
 

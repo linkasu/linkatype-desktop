@@ -19,26 +19,24 @@
 </template>
 
 <script>
-    import Key from './Shortcuts/Key.vue'
+import Key from "./Shortcuts/Key.vue"
 
-    export default {
-        components: {Key}
-    }
-
+export default {
+  components: { Key }
+}
 </script>
 
 <style scoped>
 .shortcuts {
-    position: absolute;
-    width: 80vw;
-    height: 80vh;
-    left: 10vw;
-    top: 10vh;
-    background-color: #adfcbd;
-    overflow-y: scroll;
-
+  position: absolute;
+  width: 80vw;
+  height: 80vh;
+  left: 10vw;
+  top: 10vh;
+  background-color: #adfcbd;
+  overflow-y: scroll;
 }
 ul {
-    list-style: none;
+  list-style: none;
 }
 </style>

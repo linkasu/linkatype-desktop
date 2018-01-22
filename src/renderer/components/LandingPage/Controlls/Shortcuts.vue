@@ -11,7 +11,7 @@ const store = {
 
 export default {
     data(){
-        return store;
+        return store
     }
 }
     

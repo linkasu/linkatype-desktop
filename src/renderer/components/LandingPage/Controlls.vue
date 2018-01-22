@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import Alarm from "./Controlls/Alarm";
-import Settings from "./Controlls/Settings";
-import Save from "./Controlls/Save";
-import Shortcuts from "./Controlls/Shortcuts";
+import Alarm from "./Controlls/Alarm"
+import Settings from "./Controlls/Settings"
+import Save from "./Controlls/Save"
+import Shortcuts from "./Controlls/Shortcuts"
 
 export default {
   components: { Alarm, Settings, Shortcuts, Save }

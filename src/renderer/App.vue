@@ -5,18 +5,14 @@
 </template>
 
 <script>
-  import bootstrap from 'bootstrap/dist/css/bootstrap.min.css'
+import bootstrap from "bootstrap/dist/css/bootstrap.min.css"
 
-  import LandingPage from '@/components/LandingPage'
+import LandingPage from "@/components/LandingPage"
 
-  export default {
-    name: 'distypepro',
-    components: {
-      LandingPage
-    }
+export default {
+  name: "distypepro",
+  components: {
+    LandingPage
   }
+}
 </script>
-
-<style>
-  /* CSS */
-</style>
