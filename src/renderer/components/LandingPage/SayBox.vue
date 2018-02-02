@@ -68,7 +68,7 @@ export default {
   mounted() {
     this.instance = this
     // focus
-    this.$mousetrap.bind('esc', () => {
+    this.$mousetrap.bind('mod+i', () => {
       this.$refs.input.focus()
     });
   }
