@@ -6,6 +6,8 @@
     <application></application>
     <settings v-show="settingsMenuData.active"></settings>
     <shortcuts v-show="shortcutsButtonData.active"></shortcuts>
+    <show></show>
+    
   </div>
   </div>
 </template>
@@ -19,10 +21,11 @@ import Settings from "./LandingPage/Settings"
 import Controlls from "./LandingPage/Controlls"
 import Shortcuts from "./LandingPage/Shortcuts"
 import InitPage from "./LandingPage/InitPage"
+import Show from "./LandingPage/Show"
 
 
 export default {
-  components: { Application, Controlls, Settings, Shortcuts, InitPage },
+  components: { Application, Controlls, Settings, Shortcuts, InitPage, Show },
   data() {
     return {
       settingsButtonData: Controlls.components.Settings.data(),

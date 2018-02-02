@@ -1,8 +1,8 @@
 <template>
   <div class="saybox form-group ">
     <predict ref="predict" :text.sync='text' :input.sync="this.$refs.input" :setText='setText'></predict>
-    <input type="text" ref="input" class="form-control saybox-input" v-model="text" @keypress.enter="$say.speak(text)" @keydown="typing">
-    <button type="button" class="form-control btn" @click="$say.speak(text)">Сказать</button>
+    <input type="text" ref="input" class="form-control saybox-input" v-model="text" @keypress.enter="say" @keydown="typing">
+    <button type="button" class="form-control btn" @click="say">Сказать</button>
     <dialogs ref="dialogs"  :text.sync='text' :setText='setText'></dialogs>
   </div>
 </template>
@@ -60,6 +60,9 @@ export default {
     },
     save() {
       this.$parent.$children[2].add(this.text)
+    },
+    say(){
+      this.$say.speak(this.text)
     }
   },
   mounted() {

@@ -1,6 +1,7 @@
 <template>
   <div class="controlls">
     <button class="btn btn-default product-name">DisType pro</button>
+    <show></show>
     <save></save>
     <alarm></alarm>    
     <shortcuts></shortcuts>    
@@ -13,9 +14,10 @@ import Alarm from "./Controlls/Alarm"
 import Settings from "./Controlls/Settings"
 import Save from "./Controlls/Save"
 import Shortcuts from "./Controlls/Shortcuts"
+import Show from "./Controlls/Show"
 
 export default {
-  components: { Alarm, Settings, Shortcuts, Save }
+  components: { Alarm, Settings, Shortcuts, Save, Show }
 };
 </script>
 
