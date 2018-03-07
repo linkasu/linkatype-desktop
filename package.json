@@ -1,9 +1,9 @@
 {
   "name": "distypepro-desktop",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "author": "ibakaidov",
   "description": "program for tts",
-  "license": null,
+  "license": "MIT",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
@@ -11,22 +11,24 @@
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
     "dev": "node .electron-vue/dev-runner.js",
-    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
-    "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
+    "lint":
+      "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
+    "lint:fix":
+      "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "pack": "npm run pack:main && npm run pack:renderer",
-    "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
-    "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
+    "pack:main":
+      "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
+    "pack:renderer":
+      "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "DisType Pro",
-    "appId": "ru.aacidov.distypepro",
+    "productName": "DisType",
+    "appId": "ru.aacidov.distype",
     "directories": {
       "output": "build"
     },
-    "files": [
-      "dist/electron/**/*"
-    ],
+    "files": ["dist/electron/**/*"],
     "dmg": {
       "contents": [
         {
@@ -46,7 +48,13 @@
       "icon": "build/icons/icon.icns"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "build/icons/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "ia32"]
+        }
+      ]
     },
     "linux": {
       "icon": "build/icons"
