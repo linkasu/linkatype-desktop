@@ -5,12 +5,10 @@ import {
 	shell,
 	dialog
 } from 'electron'
-import {
-	autoUpdater
-} from "electron-updater";
 
 import defaultMenu from 'electron-default-menu';
 
+import Updater from './update'
 
 /**
  * Set `__static` path to static files in production
@@ -43,6 +41,8 @@ function createWindow() {
 
 	Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
 
+
+
 }
 
 app.on('ready', createWindow)
@@ -59,29 +59,22 @@ app.on('activate', () => {
 	}
 })
 
-const server = "http://aacidov.ru/apps/distype";
-const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
+const updater = new Updater(app.getVersion());
 
-autoUpdater.setFeedURL(feed);
-
-function checkUpdate() {
-	autoUpdater.checkForUpdates().then((res) => {
-		console.log(res)
-	});
-};
-autoUpdater.on("update-downloaded", (event, releaseNotes, releaseName) => {
+updater.on('newversion', (version, url) => {
 	const dialogOpts = {
 		type: "info",
-		buttons: ["Перезапустить", "Не сейчас"],
-		title: "Application Update",
-		message: process.platform === "win32" ? releaseNotes : releaseName,
-		detail: "Была загружена новая версия. Перезапустите приложение, чтобы применить обновления."
+		buttons: ["Загрузить", "Не сейчас"],
+		title: "Обновление",
+		message: "Обновление приложения",
+		detail: `Вышла новая версия приложения ${version}, пожалуйста, скачайте и установите ее`
 	};
-
 	dialog.showMessageBox(dialogOpts, response => {
-		if (response === 0) autoUpdater.quitAndInstall();
+		if(response===0) {
+			shell.openExternal(url)
+		}
 	});
-});
 
-checkUpdate();
-setInterval(checkUpdate, 1000 * 60 * 60 * 24);
+})
+
+updater.check()

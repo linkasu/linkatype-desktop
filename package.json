@@ -1,6 +1,6 @@
 {
-  "name": "distypepro-desktop",
-  "version": "0.2.0",
+  "name": "distype",
+  "version": "1.0.0",
   "author": "ibakaidov",
   "description": "program for tts",
   "license": "MIT",
@@ -11,24 +11,22 @@
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
     "dev": "node .electron-vue/dev-runner.js",
-    "lint":
-      "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
-    "lint:fix":
-      "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
+    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
+    "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "pack": "npm run pack:main && npm run pack:renderer",
-    "pack:main":
-      "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
-    "pack:renderer":
-      "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
+    "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
+    "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "npm run lint:fix"
   },
   "build": {
     "productName": "DisType",
     "appId": "ru.aacidov.distype",
     "directories": {
-      "output": "build"
+      "output": "upload"
     },
-    "files": ["dist/electron/**/*"],
+    "files": [
+      "dist/electron/**/*"
+    ],
     "dmg": {
       "contents": [
         {
@@ -52,7 +50,10 @@
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64", "ia32"]
+          "arch": [
+            "x64",
+            "ia32"
+          ]
         }
       ]
     },
@@ -69,6 +70,7 @@
     "lowdb": "^1.0.0",
     "mousetrap": "^1.6.1",
     "say": "^0.14.0",
+    "semver-compare": "^1.0.0",
     "sweetalert2": "^7.3.2",
     "vue": "^2.5.8",
     "vue-electron": "^1.0.6",
@@ -91,7 +93,7 @@
     "del": "^3.0.0",
     "devtron": "^1.4.0",
     "electron": "^1.8.1",
-    "electron-builder": "^19.46.6",
+    "electron-builder": "^19.56.2",
     "electron-debug": "^1.4.0",
     "electron-devtools-installer": "^2.2.0",
     "electron-updater": "^2.16.3",
