@@ -21,7 +21,7 @@ class Updater extends EventEmmiter {
 				version
 			} = (await axios.get(this.url + '/version')).data
 			if (semver(version, this.version) === 1) {
-				this.emit('newversion', version, this.url + '/lastest')
+				this.emit('newversion', version, this.url + '/latest')
 			}
 
 		} catch (error) {
