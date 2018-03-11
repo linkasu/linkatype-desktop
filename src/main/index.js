@@ -7,6 +7,7 @@ import {
 } from 'electron'
 
 import defaultMenu from 'electron-default-menu';
+import isDev from 'electron-is-dev';
 
 import Updater from './update'
 
@@ -70,11 +71,11 @@ updater.on('newversion', (version, url) => {
 		detail: `Вышла новая версия приложения ${version}, пожалуйста, скачайте и установите ее`
 	};
 	dialog.showMessageBox(dialogOpts, response => {
-		if(response===0) {
+		if (response === 0) {
 			shell.openExternal(url)
 		}
 	});
 
 })
 
-updater.check()
+if (!isDev) updater.check()

@@ -65,6 +65,7 @@
     "axios": "^0.16.1",
     "bootstrap": "^3.3.7",
     "electron-default-menu": "^1.0.1",
+    "electron-is-dev": "^0.3.0",
     "fs-extra": "^4.0.2",
     "homedir": "^0.6.0",
     "lowdb": "^1.0.0",
