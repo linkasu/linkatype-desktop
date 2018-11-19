@@ -1,6 +1,6 @@
 <template>
   <div class="controlls">
-    <button class="btn btn-default product-name">DisType pro</button>
+    <button class="btn btn-default product-name">LINKa: напиши</button>
     <show></show>
     <save></save>
     <alarm></alarm>    
@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .controlls {
-  background: #3f51b5;
+  background: #197377;
   top: 0;
   position: fixed;
   text-align: right;

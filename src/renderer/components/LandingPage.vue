@@ -74,6 +74,6 @@ body,
   color: black;
   border: none;
   margin-bottom: 1px;
-  border-bottom: 1px solid #ff4081;
+  border-bottom: 1px solid #fbcc30;
 }
 </style>

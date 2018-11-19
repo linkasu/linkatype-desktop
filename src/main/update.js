@@ -7,7 +7,7 @@ import semver from 'semver-compare'
 class Updater extends EventEmmiter {
 	constructor(version) {
 		super()
-		this.server = 'http://aacidov.ru'
+		this.server = 'http://;inka.su'
 		this.path = '/apps/distype'
 		this.url = this.server + this.path;
 
